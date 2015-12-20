@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # A simple shell script for generating C++ projects with CMake. It generates
-# the CMakeList.txt, Doxigen files, folder structure and filenames
+# the CMakeList.txt, Doxigen files, folder structure and initial filenames
 
 KEPT_DIR=$PWD
 YEAR=$(date +'%Y')
