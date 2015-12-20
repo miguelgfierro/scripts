@@ -1,8 +1,11 @@
 #!/bin/sh
 
-# myproy.sh: A simple shell script for generating C++ projects 
+# A simple shell script for generating C++ projects with CMake. It generates
+# the CMakeList.txt, Doxigen files, folder structure and filenames
 
 KEPT_DIR=$PWD
+YEAR=$(date +'%Y')
+
 echo Project name?
 read PROJECT_NAME
 echo Project description?
@@ -49,7 +52,7 @@ cd src
 echo "//
 // ${PROJECT_NAME}:main.cpp
 //
-// Author: ${PROJECT_MAINTAINER} <${EMAIL_MAINTAINER}>, (C) 2012
+// Author: ${PROJECT_MAINTAINER} <${EMAIL_MAINTAINER}>, (C) ${YEAR}
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -82,7 +85,7 @@ cd src
 echo "//
 // ${PROJECT_NAME}.cpp
 //
-// Author: ${PROJECT_MAINTAINER} <${EMAIL_MAINTAINER}>, (C) 2011
+// Author: ${PROJECT_MAINTAINER} <${EMAIL_MAINTAINER}>, (C) ${YEAR}
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -110,7 +113,7 @@ cd src
 echo "//
 // ${PROJECT_NAME}.h
 //
-// Author: ${PROJECT_MAINTAINER} <${EMAIL_MAINTAINER}>, (C) 2011
+// Author: ${PROJECT_MAINTAINER} <${EMAIL_MAINTAINER}>, (C) ${YEAR}
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -151,8 +154,6 @@ SET(KEYWORD $PROJECT_NAME)
 
 # Start a project
 PROJECT(\${KEYWORD})
-
-FIND_PACKAGE( OpenCV REQUIRED )
 
 # Default build mode is RelWithDebInfo
 IF("${CMAKE_BUILD_TYPE}" STREQUAL "")
@@ -216,7 +217,7 @@ echo "
 # Project related configuration options
 #---------------------------------------------------------------------------
 PROJECT_NAME           = ${PROJECT_NAME}
-PROJECT_NUMBER         = 0.3
+PROJECT_NUMBER         = 1
 OUTPUT_DIRECTORY       = .
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
