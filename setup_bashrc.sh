@@ -12,7 +12,7 @@ ls
 #cd + ls
 function cs () {
     cd $1
-    ls
+    ls -a
 }
 
 #transfer path: save the current path to a hidden file
