@@ -5,11 +5,11 @@
 USER="hoaphumanoid" 
 #declare folders
 declare -a arr=("sciblog" "scripts" "twitter_bot")
-echo "Updating git repos of user $USER ......."
+echo "Git state repos of user $USER ......."
 for i in ${arr[@]}
 do
 	cd $i
-	echo "Updating repo $i"
-	git pull 
+	echo "STATE REPO: $i"
+	git status 
 	cd ..
 done
