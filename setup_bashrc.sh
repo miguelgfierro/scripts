@@ -3,6 +3,11 @@
 # Set up several functions to .bashrc like cs (a combination of cd+ls), ccat 
 # (cat with color) or reimplement evince to run in background.
 
+# To set up the bashrc script in Windows using cygwin it is necessary to add
+# at the beginning of the script to fix a problem with newlines the following:
+# (set -o igncr) 2>/dev/null && set -o igncr;
+
+
 echo "
 ################################################################################
 #Hide user name and host in terminal and make ls every time a terminal opens
