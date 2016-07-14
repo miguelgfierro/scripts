@@ -21,11 +21,14 @@ function cs () {
 }
 
 #transfer path: save the current path to a hidden file
+if [ ! -e ~/.sp ] ; then
+    touch ~/.sp
+fi
 function tp () {
     pwd > ~/.sp
 }
 
-#go to transfer path: goes where the previously saved tp points
+#goto transfer path: goes where the previously saved tp points
 function gtp () {
     cs `cat ~/.sp`
 }
@@ -40,9 +43,11 @@ function evince () {
     /usr/bin/evince $* 2> /dev/null & disown
 }
 function gedit (){
-	/usr/bin/gedit $* 2> /dev/null & disown
+        /usr/bin/gedit $* 2> /dev/null & disown
 }
 
 " >> ~/.bashrc
 
+source ~/.bashrc
 echo .bashrc updated
+
