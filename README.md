@@ -7,3 +7,4 @@
 * start_ubuntu.sh: Installation of many packages in a fresh Ubuntu.
 * st_git_repos.sh: It iteratively finds the status of several git repositories for a user. 
 * update_git_repos.sh: It iteratively updates several git repositories for a user.
+
