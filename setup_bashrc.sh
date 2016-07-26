@@ -7,6 +7,10 @@
 # at the beginning of the script to fix a problem with newlines the following:
 # (set -o igncr) 2>/dev/null && set -o igncr;
 
+# Create save path file if it is not created
+if [ ! -e ~/.sp ] ; then
+    touch ~/.sp
+fi
 
 echo "
 ################################################################################
@@ -21,9 +25,6 @@ function cs () {
 }
 
 #transfer path: save the current path to a hidden file
-if [ ! -e ~/.sp ] ; then
-    touch ~/.sp
-fi
 function tp () {
     pwd > ~/.sp
 }
