@@ -20,7 +20,7 @@ ls
 
 #cd + ls
 function cs () {
-    cd $1
+    cd \$1
     ls -a
 }
 
@@ -31,20 +31,20 @@ function tp () {
 
 #goto transfer path: goes where the previously saved tp points
 function gtp () {
-    cs `cat ~/.sp`
+    cs \`cat ~/.sp\`
 }
 
 #cat with color
 function ccat () {
-    source-highlight -fesc -i $1
+    source-highlight -fesc -i \$1
 }
 
 #Remove trash from terminal and runs program in background
 function evince () {
-    /usr/bin/evince $* 2> /dev/null & disown
+    /usr/bin/evince \$* 2> /dev/null & disown
 }
 function gedit (){
-        /usr/bin/gedit $* 2> /dev/null & disown
+        /usr/bin/gedit \$* 2> /dev/null & disown
 }
 
 " >> ~/.bashrc
