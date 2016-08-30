@@ -21,4 +21,6 @@ git config --global credential.helper 'cache --timeout=36000'
 
 echo "Configuring git ssh access"
 ssh-keygen -t rsa -b 4096 -C "$EMAIL"
+echo "This is your public key"
+cat ~/.ssh/id_rsa.pub
 
