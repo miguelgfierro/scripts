@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# Installer of RStudio Server in an Azure HDI cluster. To install:
+#     $ chmod +x *.sh
+#     $ sudo ./rstudio_server_install.sh
+#
 
 echo "Sample action script to install RStudio Server (community edition)..."
 
