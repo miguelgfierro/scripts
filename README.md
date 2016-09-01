@@ -8,4 +8,4 @@
 * configure_git.sh: Configure options in git such as alias, user name, email and credential helper.
 * update_git_repos.sh: It iteratively updates several git repositories for a user.
 * st_git_repos.sh: It iteratively finds the status of several git repositories for a user. 
-
+* InstallRStudio.sh: Installs RStudio Server in an Azure HDI cluster
