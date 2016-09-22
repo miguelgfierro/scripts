@@ -46,7 +46,7 @@ sudo pip install jupyter jinja2 tornado pyzmq scipy scikit-image wget
 ### repositories and connections
 sudo apt-get install git ssh openssh-server libcurl4-openssl-dev libssl-dev -y
 ### tools
-sudo apt-get install p7zip-rar mencoder -y
+sudo apt-get install p7zip-rar htop mencoder -y
 ### opencv
 sudo apt-get install libopencv-dev -y
 ### azure client
@@ -72,7 +72,6 @@ sudo apt-get autoclean
 echo
 echo "Configuring..."
 echo
-
 ### gcc
 sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 50
 
@@ -87,8 +86,6 @@ echo
 
 ### CUDA
 INSTALL_FOLDER=installer
-#mkdir -p ~/$INSTALL_FOLDER/$STORAGE_BLOB_PATH
-#azure storage blob download -q -a $STORAGE_ACCOUNT -k $STORAGE_KEY --container $STORAGE_CONTAINER -b $STORAGE_BLOB_PATH/$CUDA_INSTALLER -d ~/$INSTALL_FOLDER
 cd ~$INSTALL_FOLDER
 chmod 755 $CUDA_INSTALLER 
 sh $CUDA_INSTALLER --silent --driver --toolkit --override --verbose 
@@ -99,10 +96,10 @@ then
 	sh $CUDA_PATCH --silent --accept-eula 
 fi
 ### CuDNN
-#azure storage blob download -q -a $STORAGE_ACCOUNT -k $STORAGE_KEY --container $STORAGE_CONTAINER -b $STORAGE_BLOB_PATH/$CUDNN_INSTALLER -d ~/$INSTALL_FOLDER
 tar xvzf $CUDNN_INSTALLER
 mv cuda /usr/local/cudnn
 ln -s /usr/local/cudnn/include/cudnn.h /usr/local/cuda/include/cudnn.h
+sudo update-alternatives --install /usr/bin/nvcc nvcc /usr/bin/gcc 50
 
 ###################################
 # Math Kernel Library (MKL)
@@ -112,7 +109,7 @@ MKL_NAME=l_mkl_11.3.3.210 # TODO: automatize this
 tar xvzf $MKL_INSTALLER 
 #TODO: change options of silent.cfg with sed
 sh $MKL_NAME/install.sh --silent $MKL_NAME/silent.cfg
-
+ln -s /opt/intel/compilers_and_libraries_2016.3.210/linux/compiler/lib/intel64_lin/libiomp5.so /lib/libiomp5.so
 
 ###################################
 # RServer
@@ -121,11 +118,24 @@ sh $MKL_NAME/install.sh --silent $MKL_NAME/silent.cfg
 echo
 echo "Installing Microsoft R Server"
 echo
+
+### R Server
 RSERVER_FOLDER=r_server
-#azure storage blob download -q -a $STORAGE_ACCOUNT -k $STORAGE_KEY --container STORAGE_CONTAINER -b $STORAGE_BLOB_PATH/$RSERVER_INSTALLER -d ~/$INSTALL_FOLDER
-mkdir -p ~/$INSTALL_FOLDER/$RSERVER_FOLDER
-tar -xvzf $RSERVER_INSTALLER -C $RSERVER_FOLDER
-cd $RSERVER_FOLDER
+tar -xvzf $RSERVER_INSTALLER 
+sh $RSERVER_FOLDER/install.sh -s -a
+mv /usr/lib64/microsoft-r/8.0/lib64/R/deps/libstdc++.so.6 /tmp
+mv /usr/lib64/microsoft-r/8.0/lib64/R/deps/libgomp.so.1 /tmp
+echo "
+/usr/local/cuda/lib64/
+/usr/local/cudnn/lib64/" >> /etc/ld.so.conf
+ldconfig
+
+### R packages
+Rscript -e "install.packages('devtools', repo = 'https://cran.rstudio.com')"
+Rscript -e "install.packages(c('scales','knitr','mlbench','zoo','roxygen2','stringr','DiagrammeR','data.table','ggplot2','plyr','manipulate','colorspace','reshape2','digest','RColorBrewer','readbitmap','argparse','png','jpeg','readbitmap'), dependencies = TRUE)"
+wget https://cran.r-project.org/src/contrib/Archive/imager/imager_0.20.tar.gz
+R CMD INSTALL imager_0.20.tar.gz
+
 
 ###################################
 # Deep learning libraries
@@ -133,6 +143,7 @@ cd $RSERVER_FOLDER
 echo
 echo "Installing deep learning libraries"
 echo 
+
 ### MXNet
 git clone --recursive https://github.com/dmlc/mxnet.git
 cd mxnet
@@ -143,6 +154,16 @@ sed -i "s|USE_BLAS = atlas|USE_BLAS = mkl|" config.mk
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:/usr/local/cudnn/lib64/:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cudnn/lib64/
 make -j${nproc}
+### MXNet R package
+make rpkg
+sudo R CMD INSTALL mxnet_0.7.tar.gz
+### MXNet python package
+cd python
+sed -i "s|'numpy',|# 'numpy',|" setup.py
+python setup.py install
+PYTHONPATH=$INSTALL_FOLDER/mxnet/python:$PYTHONPATH
+echo "export PYTHONPATH=$PYTHONPATH" >> ~/.bashrc
+cd ..
 
 ###################################
 # Finish!

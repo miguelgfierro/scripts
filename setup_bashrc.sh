@@ -23,8 +23,10 @@ fi
 
 echo "
 ################################################################################
-#Hide user name and host in terminal and make ls every time a terminal opens
-export PS1="\w$ "
+#Hide user name and host in terminal 
+#export PS1="\w$ "
+
+#Make ls every time a terminal opens
 ls
 
 #cd + ls
