@@ -20,7 +20,7 @@ sudo add-apt-repository ppa:jd-team/jdownloader
 echo
 echo "Updating and upgrading..."
 echo
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade -y
 
 ###################################
 # Remove programs not used
