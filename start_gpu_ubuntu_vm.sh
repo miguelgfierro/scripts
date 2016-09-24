@@ -13,7 +13,7 @@
 echo
 echo "Updating and upgrading..."
 echo
-sudo apt-get update && sudo apt-get upgrade -y
+apt-get update && apt-get upgrade -y
 
 ###################################
 # Add external resources 
@@ -37,22 +37,22 @@ echo "Installing programs..."
 echo
 
 ### compilers and IDEs
-sudo apt-get install build-essential cmake cmake-curses-gui gfortran  pkg-config -y
+apt-get install build-essential cmake cmake-curses-gui gfortran  pkg-config -y
 ### libraries
-sudo apt-get install libboost-all-dev libeigen3-dev libblas-dev liblapack-dev libprotoc-dev -y
+apt-get install libboost-all-dev libeigen3-dev libblas-dev liblapack-dev libprotoc-dev libfftw3-dev -y
 ### python
-sudo apt-get install python-numpy python-tk python-matplotlib python-pip  -y
-sudo pip install jupyter jinja2 tornado pyzmq scipy scikit-image wget
+apt-get install python-numpy python-tk python-matplotlib python-pip  -y
+pip install jupyter jinja2 tornado pyzmq scipy scikit-image wget setuptools
 ### repositories and connections
-sudo apt-get install git ssh openssh-server libcurl4-openssl-dev libssl-dev -y
+apt-get install git ssh openssh-server libcurl4-openssl-dev libssl-dev -y
 ### tools
-sudo apt-get install p7zip-rar htop mencoder -y
+apt-get install p7zip-rar htop mencoder -y
 ### opencv
-sudo apt-get install libopencv-dev -y
+apt-get install libopencv-dev -y
 ### azure client
-sudo apt-get install nodejs-legacy -y
-sudo apt-get install npm -y
-sudo npm install -g azure-cli
+apt-get install nodejs-legacy -y
+apt-get install npm -y
+npm install -g azure-cli
 azure --completion >> ~/.azure.completion.sh
 echo 'source ~/.azure.completion.sh' >> ~/.bashrc
 azure telemetry --disable
@@ -64,7 +64,7 @@ azure config mode asm
 echo
 echo "Cleaning..."
 echo
-sudo apt-get autoclean
+apt-get autoclean
 
 ###################################
 # Configuring
@@ -73,7 +73,7 @@ echo
 echo "Configuring..."
 echo
 ### gcc
-sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 50
+update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 50
 
 ###################################
 # GPU drivers, CUDA and CuDNN
@@ -99,7 +99,7 @@ fi
 tar xvzf $CUDNN_INSTALLER
 mv cuda /usr/local/cudnn
 ln -s /usr/local/cudnn/include/cudnn.h /usr/local/cuda/include/cudnn.h
-sudo update-alternatives --install /usr/bin/nvcc nvcc /usr/bin/gcc 50
+update-alternatives --install /usr/bin/nvcc nvcc /usr/bin/gcc 50
 
 ###################################
 # Math Kernel Library (MKL)
@@ -136,6 +136,10 @@ Rscript -e "install.packages(c('scales','knitr','mlbench','zoo','roxygen2','stri
 wget https://cran.r-project.org/src/contrib/Archive/imager/imager_0.20.tar.gz
 R CMD INSTALL imager_0.20.tar.gz
 
+### R Studio
+apt-get install gdebi-core
+wget https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb
+gdebi rstudio-server-0.99.903-amd64.deb -n
 
 ###################################
 # Deep learning libraries
@@ -156,7 +160,7 @@ export LIBRARY_PATH=/usr/local/cudnn/lib64/
 make -j${nproc}
 ### MXNet R package
 make rpkg
-sudo R CMD INSTALL mxnet_0.7.tar.gz
+R CMD INSTALL mxnet_0.7.tar.gz
 ### MXNet python package
 cd python
 sed -i "s|'numpy',|# 'numpy',|" setup.py
