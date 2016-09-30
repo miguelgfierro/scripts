@@ -48,7 +48,7 @@ apt-get install git ssh openssh-server libcurl4-openssl-dev libssl-dev -y
 ### tools
 apt-get install p7zip-rar htop mencoder -y
 ### opencv
-apt-get install libopencv-dev -y
+apt-get install libopencv-dev python-opencv -y
 ### azure client
 apt-get install nodejs-legacy -y
 apt-get install npm -y
