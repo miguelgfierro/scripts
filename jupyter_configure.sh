@@ -12,14 +12,21 @@ if which jupyter-notebook >/dev/null; then
     ls -lha `which jupyter-notebook`
     jupyter-notebook --generate-config
     cd $JUPYTER_HOME
-    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
-    python -c "import IPython;print(IPython.lib.passwd())" > SHA1
-	sed -i "s|# c.NotebookApp.certfile = ''|c.NotebookApp.certfile = '\$JUPYTER_HOME/mycert.pem'|" $JUPYTER_CONF
-	sed -i "s|# c.NotebookApp.ip = '*'|c.NotebookApp.ip = '*'|" $JUPYTER_CONF
-	sed -i "s|# c.NotebookApp.keyfile = ''|c.NotebookApp.keyfile = '\$JUPYTER_HOME/mykey.pem'|" $JUPYTER_CONF
-	sed -i "s|# c.NotebookApp.password = ''|c.NotebookApp.password = '\$SHA1'|" $JUPYTER_CONF
-	sed -i "s|# c.NotebookApp.port = 8888 |c.NotebookApp.port = 8888|" $JUPYTER_CONF	
+    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.pem -out mycert.pem
+    echo "Enter password for Jupyter notebook"
+    python -c "import IPython;print(IPython.lib.passwd())" > SHA1_FILE
+    SHA1=$(cat SHA1_FILE)
+	sed -i "s|#c.NotebookApp.certfile = ''|c.NotebookApp.certfile = '$JUPYTER_HOME/mycert.pem'|" $JUPYTER_CONF
+	sed -i "s|#c.NotebookApp.ip = 'localhost'|c.NotebookApp.ip = '*'|" $JUPYTER_CONF
+	sed -i "s|#c.NotebookApp.open_browser = True|c.NotebookApp.open_browser = False|" $JUPYTER_CONF	
+	sed -i "s|#c.NotebookApp.keyfile = ''|c.NotebookApp.keyfile = '$JUPYTER_HOME/mykey.pem'|" $JUPYTER_CONF
+	sed -i "s|#c.NotebookApp.port = 8888 |c.NotebookApp.port = 8888|" $JUPYTER_CONF	
+	sed -i "s|#c.NotebookApp.password = ''|c.NotebookApp.password = '$SHA1'|" $JUPYTER_CONF
+	echo "Process finished"
+	echo "If you are in Azure, remember to open the port 8888 in the virtual machine's network security group. It can be accesed via Inbound security rules"
 	cd
 else
     echo "Jupyter notebook does not exist, please install"
 fi
+
+
