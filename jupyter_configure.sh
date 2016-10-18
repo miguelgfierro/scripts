@@ -27,6 +27,7 @@ if which jupyter-notebook >/dev/null; then
 	cd
 else
     echo "Jupyter notebook does not exist, please install"
+    exit
 fi
 
 
