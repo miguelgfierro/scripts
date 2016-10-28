@@ -1,5 +1,6 @@
-# A collection of useful scripts
+# A collection of useful scripts for Linux and Windows.
 
+* adls_download_single_file.sh: Bash script to download a file from ADLS. 
 * adls_upload_folder_with_files.ps1: Powershell script to upload a folder with multiple files to Azure DataLake Storage (ADLS).
 * alds_upload_single_file.ps1: Powershell script to upload a file to ADLS.
 * header_creator.sh: A simple shell to add headers (like copyright statements) in files
