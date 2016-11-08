@@ -2,6 +2,7 @@
 #
 # This script configure jupyter notebook in an ubuntu server
 # Info here: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-jupyter-notebook/
+# To activate an environment in the notebook: http://stackoverflow.com/a/37857536/5620182
 #
 
 JUPYTER_HOME=~/.jupyter
