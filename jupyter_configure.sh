@@ -28,6 +28,7 @@ if which jupyter-notebook >/dev/null; then
 	cd
 else
     echo "Jupyter notebook does not exist, please install"
+    echo "We recommend to install Anaconda. It can be downloaded for linux in the following link: https://www.continuum.io/downloads#linux"
     exit
 fi
 
