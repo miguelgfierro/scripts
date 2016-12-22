@@ -1,9 +1,9 @@
 # This Powershell script allows to upload all the files inside a folder to Azure Data Lake Storage.
 #
 # Usage:
-# .\adls_upload_folder_with_file.ps1 "account_name" "local_folder" "adls_folder" 
+# .\adls_upload_folder_with_files.ps1 "account_name" "local_folder" "adls_folder" 
 # Example:
-# .\adls_upload_folder_with_file.ps1 "adls_account1" "C:\temp\" "/temp/" 
+# .\adls_upload_folder_with_files.ps1 "adls_account1" "C:\temp\" "/temp/" 
 #
 # More info here: https://azure.microsoft.com/en-us/documentation/articles/data-lake-analytics-get-started-powershell/
 # 
