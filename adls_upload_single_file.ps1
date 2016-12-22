@@ -15,4 +15,4 @@ $localFolder = $args[1]
 $fileName = $args[2]
 $adlsFolder = $args[3]
 
-Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $localFolder$fileName -Destination $adlsFolder$fileName
+Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $localFolder$fileName -Destination $adlsFolder$fileName -Force
