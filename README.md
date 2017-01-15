@@ -1,7 +1,7 @@
 # A collection of useful scripts for Linux and Windows.
 
-* adls_download_single_file.sh: Bash script to download a file from ADLS. 
-* adls_upload_folder_with_files.ps1: Powershell script to upload a folder with multiple files to Azure DataLake Storage (ADLS).
+* adls_download_single_file.sh: Bash script to download a file from Azure DataLake Storage (ADLS). 
+* adls_upload_folder_with_files.ps1: Powershell script to upload a folder with multiple files to ADLS.
 * alds_upload_single_file.ps1: Powershell script to upload a file to ADLS.
 * header_creator.sh: A simple shell to add headers (like copyright statements) in files
 * make_cmake_project.sh: A simple shell script for generating C++ projects with CMake. It generates the CMakeList.txt, Doxigen files, folder structure and initial filenames.
