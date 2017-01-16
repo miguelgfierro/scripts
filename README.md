@@ -3,6 +3,7 @@
 * [adls_download_single_file.sh](adls_download_single_file.sh): Bash script to download a file from Azure DataLake Storage (ADLS). 
 * [adls_upload_folder_with_files.ps1](adls_upload_folder_with_files.ps1): Powershell script to upload a folder with multiple files to ADLS.
 * [alds_upload_single_file.ps1](alds_upload_single_file.ps1): Powershell script to upload a file to ADLS.
+* [azure_storage_upload_single_file.sh](azure_storage_upload_single_file.sh): Bash script to upload a single file to Azure Storage.
 * [git_configure.sh](git_configure.sh): Configure options in git such as alias, user name, email and credential helper.
 * [git_update_repos.sh](git_update_repos.sh): It iteratively updates several git repositories for a user.
 * [git_status_repos.sh](git_status_repos.sh): It iteratively finds the status of several git repositories for a user. 
