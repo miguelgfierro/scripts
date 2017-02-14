@@ -26,7 +26,7 @@ for ($i=0; $i -lt $files.Count; $i++) {
 	}
 	else{
 		Write-Output "Uploading: $content_adls"
-		Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $content -Destination $adlsFolder/$content_adls
+		Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $content -Destination $adlsFolder$content_adls
 	}
 }
 
