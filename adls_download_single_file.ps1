@@ -11,8 +11,8 @@
 Login-AzureRmAccount
 
 $dataLakeStoreName = $args[0]
-$localFolder = $args[1]
+$adlsFolder = $args[1]
 $fileName = $args[2]
-$adlsFolder = $args[3]
+$localFolder = $args[3]
 
 Export-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $adlsFolder$fileName -Destination $localFolder$fileName -Force
