@@ -25,7 +25,7 @@ CUDA_INSTALLER=cuda_8.0.27_linux.run
 CUDA_PATCH=cuda_8.0.27.1_linux.run
 CUDNN_INSTALLER=cudnn-8.0-linux-x64-v5.1.tgz
 ANACONDA_INSTALLER=Anaconda3-4.3.0-Linux-x86_64.sh
-RSERVER_INSTALLER=microsoft-r-server-mro-8.0.tar.gz
+RSERVER_INSTALLER=microsoft-r-server-mro-8.0
 RSTUDIO_INSTALLER=rstudio-server-1.0.136-amd64.deb
 MXNET_VERSION=450141c5293b332948e5c403c689b64f4ce22efd
 CTNK_VERSION=CNTK-2-0-beta12-0-Linux-64bit-GPU-1bit-SGD.tar.gz
@@ -80,17 +80,16 @@ echo
 INSTALL_FOLDER=$PWD
 chmod 755 $CUDA_INSTALLER 
 sh $CUDA_INSTALLER --silent --driver --toolkit --override --verbose 
-if [ -z "$CUDA_PATCH" ]
-then
-	echo "Adding the patch"
+if [ -f "$CUDA_PATCH" ]; then
+	echo "Adding CUDA patch"
 	sh $CUDA_PATCH --silent --accept-eula 
 fi
 ### CuDNN
-tar xvzf $CUDNN_INSTALLER
-mv cuda /usr/local/cudnn
-ln -s /usr/local/cudnn/include/cudnn.h /usr/local/cuda/include/cudnn.h
-update-alternatives --install /usr/bin/nvcc nvcc /usr/bin/gcc 50
-
+if [ -f "$CUDNN_INSTALLER" ]; then
+	tar xvzf $CUDNN_INSTALLER
+	mv cuda /usr/local/cudnn
+	ln -s /usr/local/cudnn/include/cudnn.h /usr/local/cuda/include/cudnn.h
+fi
 ###################################
 # Anaconda
 ###################################
@@ -98,7 +97,7 @@ echo
 echo "Installing Anaconda..."
 echo
 wget https://repo.continuum.io/archive/$ANACONDA_INSTALLER
-sh $ANACONDA_INSTALLER
+bash $ANACONDA_INSTALLER -b
 
 ###################################
 # RServer
@@ -110,16 +109,10 @@ echo "Installing Microsoft R Server"
 echo
 
 ### R Server
-RSERVER_FOLDER=r_server
-wget https://mran.revolutionanalytics.com/install/mro4mrs/8.0.5/$RSERVER_INSTALLER
-tar -xvzf $RSERVER_INSTALLER 
-sh $RSERVER_FOLDER/install.sh -s -a
-mv /usr/lib64/microsoft-r/8.0/lib64/R/deps/libstdc++.so.6 /tmp
-mv /usr/lib64/microsoft-r/8.0/lib64/R/deps/libgomp.so.1 /tmp
-echo "
-/usr/local/cuda/lib64/
-/usr/local/cudnn/lib64/" >> /etc/ld.so.conf
-ldconfig
+sudo apt-get install libpango1.0-0 -y
+wget https://mran.revolutionanalytics.com/install/mro4mrs/8.0.5/$RSERVER_INSTALLER.tar.gz
+tar -xvzf $RSERVER_INSTALLER.tar.gz
+dpkg -i $RSERVER_INSTALLER/$RSERVER_INSTALLER.deb
 
 ### R Studio can be downloaded: https://www.rstudio.com/products/rstudio/download-server/
 apt-get install gdebi-core
