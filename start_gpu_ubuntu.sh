@@ -28,7 +28,7 @@ ANACONDA_INSTALLER=Anaconda3-4.3.0-Linux-x86_64.sh
 RSERVER_INSTALLER=microsoft-r-server-mro-8.0
 RSTUDIO_INSTALLER=rstudio-server-1.0.136-amd64.deb
 MXNET_VERSION=450141c5293b332948e5c403c689b64f4ce22efd
-CTNK_VERSION=CNTK-2-0-beta12-0-Linux-64bit-GPU-1bit-SGD.tar.gz
+CNTK_VERSION=CNTK-2-0-beta12-0-Linux-64bit-GPU-1bit-SGD.tar.gz
 
 ###################################
 # Installations
@@ -113,6 +113,8 @@ sudo apt-get install libpango1.0-0 -y
 wget https://mran.revolutionanalytics.com/install/mro4mrs/8.0.5/$RSERVER_INSTALLER.tar.gz
 tar -xvzf $RSERVER_INSTALLER.tar.gz
 dpkg -i $RSERVER_INSTALLER/$RSERVER_INSTALLER.deb
+mv /usr/lib64/microsoft-r/8.0/lib64/R/deps/libstdc++.so.6 /tmp
+mv /usr/lib64/microsoft-r/8.0/lib64/R/deps/libgomp.so.1 /tmp
 
 ### R Studio can be downloaded: https://www.rstudio.com/products/rstudio/download-server/
 apt-get install gdebi-core
@@ -120,6 +122,8 @@ wget https://download2.rstudio.org/$RSTUDIO_INSTALLER
 gdebi $RSTUDIO_INSTALLER -n
 
 ### R packages
+ln -s /bin/gzip /usr/bin/gzip
+
 Rscript -e "install.packages('devtools', repo = 'https://cran.rstudio.com')"
 Rscript -e "install.packages(c('scales','knitr','mlbench','zoo','roxygen2','stringr','DiagrammeR','data.table','ggplot2','plyr','manipulate','colorspace','reshape2','digest','RColorBrewer','readbitmap','argparse','png','jpeg','readbitmap'), dependencies = TRUE)"
 
@@ -174,3 +178,5 @@ fi
 echo
 echo "Finish! All done!"
 echo
+
+
