@@ -20,7 +20,6 @@ apt-get update && apt-get upgrade -y
 echo
 echo "Adding external resources to the environment..."
 echo
-#source resources.txt
 CUDA_INSTALLER=cuda_8.0.27_linux.run
 CUDA_PATCH=cuda_8.0.27.1_linux.run
 CUDNN_INSTALLER=cudnn-8.0-linux-x64-v5.1.tgz
@@ -29,6 +28,11 @@ RSERVER_INSTALLER=microsoft-r-server-mro-8.0
 RSTUDIO_INSTALLER=rstudio-server-1.0.136-amd64.deb
 MXNET_VERSION=450141c5293b332948e5c403c689b64f4ce22efd
 CNTK_VERSION=CNTK-2-0-beta12-0-Linux-64bit-GPU-1bit-SGD.tar.gz
+# Installation forlders
+INSTALL_FOLDER=$PWD
+#get user even if the script was called with sudo
+if [ $SUDO_USER ]; then CURRENT_USER=$SUDO_USER; else CURRENT_USER=`whoami`; fi
+INSTALL_HOME=/home/$CURRENT_USER
 
 ###################################
 # Installations
@@ -54,8 +58,8 @@ apt-get install libopencv-dev python-opencv -y
 apt-get install nodejs-legacy -y
 apt-get install npm -y
 npm install -g azure-cli
-azure --completion >> ~/.azure.completion.sh
-echo 'source ~/.azure.completion.sh' >> ~/.bashrc
+azure --completion >> $INSTALL_HOME/.azure.completion.sh
+echo 'source ~/.azure.completion.sh' >> $INSTALL_HOME/.bashrc
 azure telemetry --disable
 azure config mode asm
 
@@ -77,7 +81,6 @@ echo "Installing CUDA and CuDNN..."
 echo
 
 ### CUDA
-INSTALL_FOLDER=$PWD
 chmod 755 $CUDA_INSTALLER 
 sh $CUDA_INSTALLER --silent --driver --toolkit --override --verbose 
 if [ -f "$CUDA_PATCH" ]; then
@@ -97,7 +100,8 @@ echo
 echo "Installing Anaconda..."
 echo
 wget https://repo.continuum.io/archive/$ANACONDA_INSTALLER
-bash $ANACONDA_INSTALLER -b
+bash $ANACONDA_INSTALLER -b -p $INSTALL_HOME/anaconda3
+chown -R $CURRENT_USER:$CURRENT_USER $INSTALL_HOME/anaconda3
 
 ###################################
 # RServer
@@ -158,7 +162,7 @@ then
 	sed -i "s|'numpy',|# 'numpy',|" setup.py
 	python setup.py install
 	PYTHONPATH=$INSTALL_FOLDER/mxnet/python:$PYTHONPATH
-	echo "export PYTHONPATH=$PYTHONPATH" >> ~/.bashrc
+	echo "export PYTHONPATH=$PYTHONPATH" >> $INSTALL_HOME/.bashrc
 	cd ../..
 fi
 
