@@ -68,15 +68,6 @@ echo
 apt-get autoclean
 
 ###################################
-# Configuring
-###################################
-echo
-echo "Configuring..."
-echo
-### gcc
-update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 50
-
-###################################
 # GPU drivers, CUDA and CuDNN
 ###################################
 # CUDA can be downloaded: https://developer.nvidia.com/cuda-toolkit
@@ -89,7 +80,6 @@ echo
 INSTALL_FOLDER=$PWD
 chmod 755 $CUDA_INSTALLER 
 sh $CUDA_INSTALLER --silent --driver --toolkit --override --verbose 
-if CUDA_PATCH:
 if [ -z "$CUDA_PATCH" ]
 then
 	echo "Adding the patch"
