@@ -1,7 +1,7 @@
-# This python script allows to download all the files inside a folder from Azure Data Lake Storage.
+# This python script allows to upload all the files inside a folder from Azure Data Lake Storage.
 #
 # Usage:
-# python adls_download_folder_with_files.py --account-name account_name --adls-folder /temp --local-folder C:\temp
+# python adls_upload_folder_with_files.py --account-name account_name --local-folder C:\temp --adls-folder /temp
 #
 # More info here: https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-python
 #
@@ -33,9 +33,9 @@ def client(args):
 if __name__ == "__main__":
     args = parse()
     adls_client = client(args)
-    print("Downloading content from ADLS account: {}".format(args.account_name))
-    print("Downloading {0} into {1}...".format(args.adls_folder, args.local_folder))
+    print("Uploading content to ADLS account: {}".format(args.account_name))
+    print("Uploading {0} into {1}...".format(args.local_folder, args.adls_folder))
     with Timer() as t:
-        multithread.ADLDownloader(adls_client, lpath=args.local_folder, rpath=args.adls_folder, nthreads=16,
+        multithread.ADLUploader(adls_client, lpath=args.local_folder, rpath=args.adls_folder, nthreads=16,
                                   overwrite=True, buffersize=4194304, blocksize=4194304)
     print("Process time {}s".format(t.interval))
