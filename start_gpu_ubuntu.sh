@@ -102,6 +102,7 @@ echo
 wget https://repo.continuum.io/archive/$ANACONDA_INSTALLER
 bash $ANACONDA_INSTALLER -b -p $INSTALL_HOME/anaconda3
 chown -R $CURRENT_USER:$CURRENT_USER $INSTALL_HOME/anaconda3
+echo "export PATH=$INSTALL_HOME/anaconda3/bin:\$PATH" >> $INSTALL_HOME/.bashrc
 
 ###################################
 # RServer
