@@ -1,4 +1,4 @@
-# This Powershell script allows to upload all the files inside a folder to Azure Data Lake Storage.
+# This Powershell script allows to download all the files inside a folder from Azure Data Lake Storage.
 #
 # Usage:
 # .\adls_download_folder_with_files.ps1 "account_name" "adls_folder" "local_folder"  
