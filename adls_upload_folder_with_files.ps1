@@ -3,7 +3,7 @@
 # Usage:
 # .\adls_upload_folder_with_files.ps1 "account_name" "local_folder" "adls_folder" 
 # Example:
-# .\adls_upload_folder_with_files.ps1 "adls_account1" "C:\temp\" "/temp/" 
+# .\adls_upload_folder_with_files.ps1 "adls_account1" "C:\temp" "/temp" 
 #
 # More info here: https://azure.microsoft.com/en-us/documentation/articles/data-lake-analytics-get-started-powershell/
 # 
@@ -46,7 +46,7 @@ for ($i=0; $i -lt $files.Count; $i++) {
 	}
 	else{
 		Write-Output "Uploading: $content_adls"
-		Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $content -Destination $adlsFolder$content_adls -Force
+		Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path $content -Destination $adlsFolder/$content_adls -Force
 	}
 }
 $sw.Stop()
