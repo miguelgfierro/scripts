@@ -42,7 +42,7 @@ for ($i=0; $i -lt $files.Count; $i++) {
 	$content_adls = $content_cleaned.Replace("\","/")
 	if(Test-Path $content -PathType Container){
 		Write-Output "Creating folder: $content_adls" 
-		New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $adlsFolder/$content_adls
+		New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $adlsFolder/$content_adls -Force
 	}
 	else{
 		Write-Output "Uploading: $content_adls"
