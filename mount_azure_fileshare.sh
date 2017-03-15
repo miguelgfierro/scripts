@@ -23,8 +23,9 @@ if [ "$#" -ne 4 ]; then
   echo "ERROR:Incorrect number of arguments"
   echo "Usage:"
   echo "sh mount_azure_fileshare.sh storage_name storage_key fileshare_name mount_point"
+  echo ""
   exit 1
 fi
 
 sudo mkdir -p $MOUNT_POINT
-sudo -E env PATH=$PATH mount -t cifs //$STORAGE_NAME.file.core.windows.net/$FILESHARE_NAME $MOUNT_POINT -o vers=3.0,username=$STORAGE_NAME,password=$STORAGE_KEY,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //$STORAGE_NAME.file.core.windows.net/$FILESHARE_NAME $MOUNT_POINT -o vers=3.0,username=$STORAGE_NAME,password=$STORAGE_KEY,dir_mode=0777,file_mode=0777
