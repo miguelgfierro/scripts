@@ -5,6 +5,8 @@
 # select your storage, under Services press Files, create a File Share with a name and a size (max. 5Tb). The name you 
 # chose is $FILESHARE_NAME in this script.  
 #
+# WARNING: The VM and the storage has to be in the same region!
+#
 # Usage:
 # sh mount_azure_fileshare.sh storage_name storage_key fileshare_name mount_point
 # Example:
