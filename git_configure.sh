@@ -2,7 +2,7 @@
 #
 # This script configure some global options in git like aliases, credential helper,
 # user name and email. To use:
-# $ sh git_configure.sh 
+# $ bash git_configure.sh
 #
 echo ""
 echo "Configuring git..."
@@ -23,7 +23,7 @@ git config --global core.editor "vim"
 git config --global credential.helper 'cache --timeout=36000'
 
 read -r -p "Do you want to add ssh credentials for git? [y/n] " RESP
-RESP=${RESP,,}    # tolower
+RESP=${RESP,,}    # tolower (only works with /bin/bash)
 if [[ $RESP =~ ^(yes|y)$ ]]
 then
     echo "Configuring git ssh access..."
