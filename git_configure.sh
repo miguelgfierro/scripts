@@ -8,8 +8,9 @@ echo ""
 echo "Configuring git..."
 echo "Write your git username"
 read USER
-echo "Write your git email"
-read EMAIL
+DEFAULT_EMAIL = "$USER@users.noreply.github.com"
+read -e -p "Write your git email [Press enter to accept the private email: $DEFAULT_EMAIL]" EMAIL
+EMAIL="${EMAIL:-${DEFAULT_EMAIL}}"
 
 echo "Configuring global user name and email..."
 git config --global user.name "$USER"
