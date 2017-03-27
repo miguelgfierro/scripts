@@ -4,6 +4,7 @@
 # python adls_download_folder_with_files.py --account-name account_name --adls-folder /temp --local-folder C:\temp
 #
 # More info here: https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-python
+# Install: pip install azure-datalake-store
 #
 
 import argparse
@@ -39,5 +40,5 @@ if __name__ == "__main__":
     threads = multiprocessing.cpu_count()
     with Timer() as t:
         multithread.ADLDownloader(adls_client, lpath=args.local_folder, rpath=args.adls_folder, nthreads=threads,
-                                  overwrite=True, buffersize=4194304, blocksize=4194304)
+                                  overwrite=True, buffersize=4194304, blocksize=4194304, verbose=True)
     print("Process time {}s".format(t.interval))
