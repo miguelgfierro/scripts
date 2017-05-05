@@ -28,8 +28,9 @@ if [[ $RESP =~ ^(yes|y)$ ]]
 then
     echo "Configuring git ssh access..."
     ssh-keygen -t rsa -b 4096 -C "$EMAIL"
-    echo "This is your public key"
+    echo "This is your public key. To activate it in github, got to settings, SHH and GPG keys, New SSH key, and enter the following key:"
     cat ~/.ssh/id_rsa.pub
 fi
+echo ""
 echo "git configured"
 
