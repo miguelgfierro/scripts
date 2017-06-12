@@ -34,6 +34,7 @@ then
     echo "Showing the UUID of the disk"
     sudo -i blkid
     echo ""
+    #FIXME: Get the UUID automatically
     read -r -p "Enter the UUID without quotes of disk $DISK1: " UUID
     sudo echo "
 ########################################
