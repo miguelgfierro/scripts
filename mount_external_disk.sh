@@ -1,5 +1,6 @@
 #!/bin/bash
-# This bash script allows to mount an external disk in a linux VM.
+# This bash script allows to very quickly mount an external disk in a linux Azure VM.
+# Link to the manual tutorial: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk
 #
 
 echo "List of system disks"
