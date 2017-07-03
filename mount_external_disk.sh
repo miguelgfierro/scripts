@@ -2,6 +2,9 @@
 # This bash script allows to very quickly mount an external disk in a linux Azure VM.
 # Link to the manual tutorial: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk
 #
+# Usage:
+# sh mount_external_disk.sh
+#
 
 echo "List of system disks"
 #Check if lsscsi exists, if not install
