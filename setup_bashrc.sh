@@ -7,7 +7,8 @@
 # at the beginning of the script to fix a problem with newlines the following:
 # (set -o igncr) 2>/dev/null && set -o igncr;
 #
-# IMPORTANT!!!
+# Tested in Ubuntu and Mac
+# 
 # METHOD OF USE:
 #
 # source setup_bashrc.sh
@@ -17,6 +18,7 @@
 # is started as child process of the main shell.
 #
 # Contributors: Miguel Gonzalez-Fierro, Gustav Henning and Frederic Dauod
+#
 
 # Exit if not sourced
 if [ "$0" == "$BASH_SOURCE" ]; then

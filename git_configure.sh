@@ -1,9 +1,11 @@
 #!/bin/bash
 #
 # This script configure some global options in git like aliases, credential helper,
-# user name and email. To use:
-# $ bash git_configure.sh
+# user name and email. Tested in Ubuntu and Mac. 
+# Method of use:
+# sh git_configure.sh
 #
+
 echo ""
 echo "Configuring git..."
 echo "Write your git username"
