@@ -2,8 +2,9 @@
 #
 # This script configure some global options in git like aliases, credential helper,
 # user name and email. Tested in Ubuntu and Mac. 
+#
 # Method of use:
-# sh git_configure.sh
+# source git_configure.sh
 #
 
 echo ""
@@ -34,6 +35,18 @@ then
     cat ~/.ssh/id_rsa.pub
     echo ""
     echo "To work with the ssh key, you have to clone all your repos with ssh instead of https. For example, for this repo you will have to use the url: git@github.com:miguelgfierro/scripts.git"
+fi
+
+echo "Setting autocompletion"
+if [ "$(uname)" == "Darwin" ]; then # Mac OS X platform  
+	AUTOCOMPLETION_URL="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+	AUTOCOMPLETION_PATH=/opt/local/etc/bash_completion.d
+	AUTOCOMPLETION_SCRIPT=git-completion.bash 
+	sudo mkdir -p $AUTOCOMPLETION_PATH
+	sudo curl  -o $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT $AUTOCOMPLETION_URL
+	source $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT
+else
+	echo "OS is not Mac or Linux, autocompletion not installed"
 fi
 echo ""
 echo "git configured"
