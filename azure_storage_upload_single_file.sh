@@ -25,10 +25,8 @@ if [ "$#" -ne 5 ]; then
 fi
 
 export AZURE_STORAGE_ACCOUNT=$ACCOUNT_NAME
-export AZURE_STORAGE_ACCESS_KEY=$ACCOUNT_KEY
+export AZURE_STORAGE_KEY=$ACCOUNT_KEY
 
-azure telemetry --disable
-azure config mode arm
-azure storage blob upload $LOCAL_FILEPATH $CONTAINER_NAME $REMOTE_FILEPATH
+az storage blob upload --file $LOCAL_FILEPATH --container-name $CONTAINER_NAME --name $REMOTE_FILEPATH
 
 
