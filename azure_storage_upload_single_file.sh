@@ -7,7 +7,7 @@
 # Example:
 # sh azure_storage_upload_single_file.sh azure_account1 3425324534eREWTSDER+2343243fsdfw4q3== /tmp/test.csv tmp_container /data/temp.csv
 #
-# More info here: https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs
+# More info here: https://docs.microsoft.com/en-us/azure/storage/common/storage-azure-cli
 #
 
 ACCOUNT_NAME=$1
