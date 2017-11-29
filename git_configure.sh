@@ -45,8 +45,9 @@ if [ "$(uname)" == "Darwin" ]; then # Mac OS X platform
 	sudo mkdir -p $AUTOCOMPLETION_PATH
 	sudo curl  -o $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT $AUTOCOMPLETION_URL
 	source $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT
+	echo "source $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT" >> ~/.bash_profile
 else
-	echo "OS is not Mac or Linux, autocompletion not installed"
+	echo "OS is not Mac, autocompletion not installed"
 fi
 echo ""
 echo "git configured"
