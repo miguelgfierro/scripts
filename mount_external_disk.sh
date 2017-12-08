@@ -3,14 +3,14 @@
 # Link to the manual tutorial: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/classic/attach-disk
 #
 # Usage:
-# sh mount_external_disk.sh
+# sudo sh mount_external_disk.sh
 #
 
 echo "List of system disks"
 #Check if lsscsi exists, if not install
 if ! [ -x "$(command -v lsscsi)" ];then
     echo "Program lsscsi not found, installing"
-    sudo apt-get install lsscsi
+    apt-get install lsscsi
 fi
 lsscsi
 
@@ -32,15 +32,15 @@ RESP=${RESP,,}    # tolower
 if [[ $RESP =~ ^(yes|y)$ ]] 
 then
     echo -e "n\np\n1\n\n\nw" | sudo fdisk $DISK
-    sudo mkfs -t ext4 $DISK1
-    sudo mkdir $DRIVE
-    sudo mount $DISK1 $DRIVE
+    mkfs -t ext4 $DISK1
+    mkdir $DRIVE
+    mount $DISK1 $DRIVE
     echo "Showing the UUID of the disk"
     sudo -i blkid
     echo ""
     #FIXME: Get the UUID automatically
     read -r -p "Enter the UUID without quotes of disk $DISK1: " UUID
-    sudo echo "
+    echo "
 ########################################
 UUID=$UUID $DRIVE ext4 defaults,nofail   1   2
     " >> /etc/fstab
