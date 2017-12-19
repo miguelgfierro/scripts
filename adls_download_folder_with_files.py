@@ -9,7 +9,7 @@
 
 import argparse
 from azure.datalake.store import core, lib, multithread
-from timer import Timer
+import time
 import multiprocessing
 
 
@@ -38,7 +38,8 @@ if __name__ == "__main__":
     print("Downloading content from ADLS account: {}".format(args.account_name))
     print("Downloading {0} into {1}...".format(args.adls_folder, args.local_folder))
     threads = multiprocessing.cpu_count()
-    with Timer() as t:
-        multithread.ADLDownloader(adls_client, lpath=args.local_folder, rpath=args.adls_folder, nthreads=threads,
+    start_time = time.time()
+    multithread.ADLDownloader(adls_client, lpath=args.local_folder, rpath=args.adls_folder, nthreads=threads,
                                   overwrite=True, buffersize=4194304, blocksize=4194304, verbose=True)
-    print("Process time {}s".format(t.interval))
+    print()
+    print("Process time {} seconds".format(time.time() - start_time))
