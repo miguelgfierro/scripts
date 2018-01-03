@@ -5,6 +5,7 @@
 * [git_configure.sh](git_configure.sh): Configure options in git such as alias, user name, email and credential helper.
 * [git_update_repos.sh](git_update_repos.sh): It iteratively updates several git repositories for a user.
 * [git_status_repos.sh](git_status_repos.sh): It iteratively finds the status of several git repositories for a user. 
+* [git_find_big.sh](git_find_big.sh): List git objects ordered by size.
 * [jupyter_configure.sh](jupyter_configure.sh): Set up jupyter notebook environment in a Ubuntu server.
 * [setup_bashrc.sh](setup_bashrc.sh): Set up several functions to .bashrc like cs (a combination of cd+ls), ccat (cat with color) or reimplement evince to run in background.
 * [setup_vim.sh](setup_vim.sh): Set up functions for vim such as the line numbers
