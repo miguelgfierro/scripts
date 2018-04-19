@@ -97,9 +97,15 @@ if [ $(uname -o) == "Cygwin" ]; then
   fi
 fi
 
-# Add .bashrc to Mac OS X platform
-if [ "$(uname)" == "Darwin" ]; then   
-  echo "source ~/.bashrc" >> ~/.bash_profile
+# Add .bash_profile if it doesn't exist
+if [ ! -f ~/.bash_profile ]; then
+    echo ".bash_profile not found! Creating..."
+    echo "
+# include .bashrc if it exists
+if [ -f "\$HOME/.bashrc" ]; then
+. "\$HOME/.bashrc"
+fi
+    " > ~/.bash_profile
 fi
 
 echo ".bashrc updated"
