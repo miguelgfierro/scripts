@@ -18,9 +18,9 @@ REMOTE_FOLDER=$5
 
 if [ "$#" -ne 5 ]; then
   echo ""
-  echo "ERROR:Incorrect number of arguments"
+  echo "ERROR: Incorrect number of arguments"
   echo "Usage:"
-  echo "sh azure_storage_upload_single_file.sh account_name account_key local_folder container_name remote_folder"
+  echo "sh azure_blob_upload_folder_with_files.sh account_name account_key local_folder container_name remote_folder"
   exit 1
 fi
 
