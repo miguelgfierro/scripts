@@ -19,8 +19,10 @@
 * [adls_upload_folder_with_files.ps1](adls_upload_folder_with_files.ps1): Powershell script to upload a folder with multiple files to ADLS.
 * [adls_upload_folder_with_files.py](adls_upload_folder_with_files.py): Python script to upload a folder with multiple files to ADLS.
 * [adls_upload_single_file.ps1](adls_upload_single_file.ps1): Powershell script to upload a file to ADLS.
-* [azure_storage_download_single_file.sh](azure_storage_download_single_file.sh): Bash script to download a single file to Azure Storage.
-* [azure_storage_upload_single_file.sh](azure_storage_upload_single_file.sh): Bash script to upload a single file to Azure Storage.
+* [azure_blob_download_folder_with_files.sh](azure_blob_download_folder_with_files.sh): Bash script to download a folder from Azure Storage Blob.
+* [azure_blob_download_single_file.sh](azure_blob_download_single_file.sh): Bash script to download a single file from Azure Storage Blob.
+* [azure_blob_upload_folder_with_files.sh](azure_blob_upload_folder_with_files.sh): Bash script to upload a folder to Azure Storage Blob. 
+* [azure_blob_upload_single_file.sh](azure_blob_upload_single_file.sh): Bash script to upload a single file to Azure Storage Blob.
 * [mount_azure_fileshare.cmd](mount_azure_fileshare.cmd): Windows executable to mount an Azure Fileshare.
 * [mount_azure_fileshare.sh](mount_azure_fileshare.sh): Bash script to mount an Azure Fileshare.
 * [mount_external_disk.sh](mount_external_disk.sh): Bash script to automatically mount an external Azure disk.
