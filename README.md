@@ -35,3 +35,5 @@
 * [start_ubuntu.sh](start_ubuntu.sh): Installation of many packages in a fresh Ubuntu.
 * [start_gpu_ubuntu.sh](start_gpu_ubuntu.sh): Installation of many packages for a GPU Ubuntu. 
 
+## Misc
+* [bing_images_downloader.py](bing_images_downloader.py): A script to download images from Bing.
