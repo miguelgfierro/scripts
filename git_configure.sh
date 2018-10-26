@@ -37,8 +37,8 @@ then
     echo "To work with the ssh key, you have to clone all your repos with ssh instead of https. For example, for this repo you will have to use the url: git@github.com:miguelgfierro/scripts.git"
 fi
 
-echo "Setting autocompletion"
 if [ "$(uname)" == "Darwin" ]; then # Mac OS X platform  
+	echo "Setting autocompletion"
 	AUTOCOMPLETION_URL="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
 	AUTOCOMPLETION_PATH=/opt/local/etc/bash_completion.d
 	AUTOCOMPLETION_SCRIPT=git-completion.bash 
@@ -46,8 +46,6 @@ if [ "$(uname)" == "Darwin" ]; then # Mac OS X platform
 	sudo curl  -o $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT $AUTOCOMPLETION_URL
 	source $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT
 	echo "source $AUTOCOMPLETION_PATH/$AUTOCOMPLETION_SCRIPT" >> ~/.bash_profile
-else
-	echo "OS is not Mac, autocompletion not installed"
 fi
 echo ""
 echo "git configured"
