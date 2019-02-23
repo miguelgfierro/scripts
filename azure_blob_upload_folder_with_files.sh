@@ -6,6 +6,8 @@
 # sh azure_blob_upload_folder_with_files.sh account_name account_key local_folder container_name remote_folder
 # Example:
 # sh azure_blob_upload_folder_with_files.sh azure_account1 3425324534eREWTSDER+2343243fsdfw4q3== /tmp/data tmp_container data
+# Example for uploading files to the root of a container
+# sh azure_blob_upload_folder_with_files.sh azure_account1 3425324534eREWTSDER+2343243fsdfw4q3== /tmp/data tmp_container /
 #
 # More info here: https://docs.microsoft.com/en-us/cli/azure/storage/blob?view=azure-cli-latest#az-storage-blob-upload-batch
 #
