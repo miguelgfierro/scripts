@@ -22,6 +22,7 @@ git config --global user.email "$EMAIL"
 echo "Configuring global aliases..."
 git config --global alias.ci commit
 git config --global alias.st status
+git config --global alias.sub "submodule update --remote --merge"
 git config --global core.editor "vim"
 git config --global credential.helper 'cache --timeout=36000'
 
