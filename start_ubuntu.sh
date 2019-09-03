@@ -70,7 +70,7 @@ sudo apt-get install git ssh openssh-server filezilla filezilla-common -y
 ### tools
 sudo apt-get install kdiff3-qt vim source-highlight -y
 ### latex
-sudo apt-get install texlive-latex-base texlive-base texlive-doc-es texlive-latex-extra texlive-font-utils texlive-fonts-recommended texlive-generic-recommended texlive-generic-extra texlive-omega texlive-plain-extra texlive-extra-utils texlive-lang-spanish texlive-lang-english texlive-pictures texlive-math-extra texlive-science -y
+sudo apt-get install texlive-latex-base texlive-base texlive-latex-extra texlive-font-utils texlive-fonts-recommended texlive-generic-recommended texlive-generic-extra texlive-omega texlive-plain-extra texlive-extra-utils texlive-lang-spanish texlive-lang-english texlive-pictures texlive-math-extra texlive-science -y
 sudo apt-get install gedit-plugins/trusty gedit-latex-plugin -y
 ### web tools
 echo "To install LAMP:"
