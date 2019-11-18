@@ -38,7 +38,7 @@ def get_ips(rg_name, vmss_name):
 
 
 def run_script(script):
-    process = subprocess.Popen(script.split(), stdout=subprocess.PIPE, shell=True)
+    process = subprocess.Popen(script, stdout=subprocess.PIPE, shell=True)
     output, error = process.communicate()
     if error is not None and len(error) > 0:
         raise RuntimeError(error)
