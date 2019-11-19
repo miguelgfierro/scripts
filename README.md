@@ -10,7 +10,7 @@
 * [setup_bashrc.sh](setup_bashrc.sh): Set up several functions to .bashrc like cs (a combination of cd+ls), ccat (cat with color) or reimplement evince to run in background.
 * [setup_vim.sh](setup_vim.sh): Set up functions for vim such as the line numbers
 
-## Utilities for Azure storage (Blob, Fileshare and ADLS)
+## Utilities for Azure
 
 * [adls_download_folder_with_files.ps1](adls_download_folder_with_files.ps1): Powershell script to download a folder with multiple files to ADLS.
 * [adls_download_folder_with_files.py](adls_download_folder_with_files.py): Python script to download a folder with multiple files to ADLS.
@@ -26,6 +26,7 @@
 * [mount_azure_fileshare.cmd](mount_azure_fileshare.cmd): Windows executable to mount an Azure Fileshare.
 * [mount_azure_fileshare.sh](mount_azure_fileshare.sh): Bash script to mount an Azure Fileshare.
 * [mount_external_disk.sh](mount_external_disk.sh): Bash script to automatically mount an external Azure disk.
+* [vmss_deploy_with_public_ip.py](vmss_deploy_with_public_ip.py): deploys Azure VMSS (Virtual Machine Scale Set), and run [vm_user_env_setup.sh](vm_user_env_setup.sh) on each VM instance to clone a repository, install conda environment and create multiple JupyterHub users.
 
 ## Utilities for installing software
 
