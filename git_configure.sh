@@ -31,9 +31,9 @@ RESP=${RESP,,}    # tolower (only works with /bin/bash)
 if [[ $RESP =~ ^(yes|y)$ ]]
 then
     echo "Configuring git ssh access..."
-    ssh-keygen -t rsa -b 4096 -C "$EMAIL"
+    ssh-keygen -t ed25519 -C -C "$EMAIL"
     echo "This is your public key. To activate it in github, got to settings, SHH and GPG keys, New SSH key, and enter the following key:"
-    cat ~/.ssh/id_rsa.pub
+    cat ~/.ssh/id_ed25519.pub
     echo ""
     echo "To work with the ssh key, you have to clone all your repos with ssh instead of https. For example, for this repo you will have to use the url: git@github.com:miguelgfierro/scripts.git"
 fi
