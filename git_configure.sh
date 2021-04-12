@@ -31,7 +31,7 @@ RESP=${RESP,,}    # tolower (only works with /bin/bash)
 if [[ $RESP =~ ^(yes|y)$ ]]
 then
     echo "Configuring git ssh access..."
-    ssh-keygen -t ed25519 -C -C "$EMAIL"
+    ssh-keygen -t ed25519 -C "$EMAIL"
     echo "This is your public key. To activate it in github, got to settings, SHH and GPG keys, New SSH key, and enter the following key:"
     cat ~/.ssh/id_ed25519.pub
     echo ""
