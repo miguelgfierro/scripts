@@ -1,3 +1,8 @@
+[![Lines of code](https://tokei.rs/b1/github/miguelgfierro/scripts)](https://github.com/miguelgfierro/scripts/graphs/contributors)
+[![Files](https://tokei.rs/b1/github/miguelgfierro/scripts?category=files)](https://github.com/miguelgfierro/scripts/graphs/contributors)
+[![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
+[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com)
+
 # A collection of useful scripts for Linux, Windows & Mac.
 
 ## Utilities for command line in Linux and Mac
