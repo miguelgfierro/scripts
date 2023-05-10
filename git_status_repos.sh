@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script updates all git repos for a user. The script should be located in a root folder containing each repo folder.
+# This script shows status of all git repos for a user. The script should be located in a root folder containing each repo folder.
 #
 USER="hoaphumanoid" 
 #declare folders
