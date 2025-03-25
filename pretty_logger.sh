@@ -6,6 +6,27 @@
 # sh pretty_logger.sh
 # sh pretty_logger.sh my_log_file.txt
 
+# Display help
+display_help() {
+  echo "Usage: $(basename "$0") [LOG_FILE] [-h|--help]"
+  echo
+  echo "Display a log file with ERROR lines highlighted in red"
+  echo
+  echo "Options:"
+  echo "  LOG_FILE    Path to log file (default: app.log)"
+  echo "  -h, --help  Display this help message and exit"
+  echo
+  echo "Example:"
+  echo "  $(basename "$0")                # Display app.log"
+  echo "  $(basename "$0") my_logs.log    # Display my_logs.log"
+  exit 0
+}
+
+# Check for help flag
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  display_help
+fi
+
 # Get the log file from command line argument or use default
 LOG_FILE="${1:-app.log}"
 
