@@ -1,4 +1,5 @@
-# Script to display a log file with ERROR lines in red
+# Script to display a log file with ERROR lines in red.
+# It displays the latest 200 lines of the log file.
 # It assumes that the errors are logged as for example: 
 # 2025-03-25 15:10:15 ERROR 'int' object has no attribute 'split'
 #
@@ -29,5 +30,12 @@ fi
 
 # Get the log file from command line argument or use default
 LOG_FILE="${1:-app.log}"
+
+# Check if the log file exists
+if [ ! -f "$LOG_FILE" ]; then
+  echo "ERROR: Log file '$LOG_FILE' does not exist."
+  echo "Run '$(basename "$0") --help' for usage information."
+  exit 1
+fi
 
 tail -n 200 -f "$LOG_FILE" | awk '/ERROR/{print "\033[31m" $0 "\033[0m"; next} {print $0}'
