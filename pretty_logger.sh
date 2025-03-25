@@ -1,4 +1,4 @@
-# Script to display a log file with ERROR lines in red.
+# Script to display a log file with ERROR lines in red in the linux terminal.
 # It displays the latest 200 lines of the log file.
 # The log file has to exist.
 # It assumes that the errors are logged as for example: 
