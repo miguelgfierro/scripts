@@ -1,5 +1,6 @@
 # Script to display a log file with ERROR lines in red.
 # It displays the latest 200 lines of the log file.
+# The log file has to exist.
 # It assumes that the errors are logged as for example: 
 # 2025-03-25 15:10:15 ERROR 'int' object has no attribute 'split'
 #
@@ -33,7 +34,7 @@ LOG_FILE="${1:-app.log}"
 
 # Check if the log file exists
 if [ ! -f "$LOG_FILE" ]; then
-  echo "ERROR: Log file '$LOG_FILE' does not exist."
+  echo "\033[31mERROR: Log file '$LOG_FILE' does not exist.\033[0m"
   echo "Run '$(basename "$0") --help' for usage information."
   exit 1
 fi
